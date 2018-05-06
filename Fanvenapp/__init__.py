@@ -4,7 +4,7 @@
 郑重声明：
     程序翻译结果皆来自百度和谷歌，使用本程序者所造成的任何后果本人概不负责。
 """
-__author__ = "790152894@qq.com>"
+__author__ = "hannochtao@163.com>"
 
 __copyright_info__ = '©2018 hannoch'
 
