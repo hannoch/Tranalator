@@ -59,11 +59,11 @@ Beautiful Soup支持Python标准库中的HTML解析器,还支持一些第三方�
     pip install requests
 
 
-参考文献：
-[Python读取word文本操作详解][2] 
-[tkinter模块常用参数(python3)][3]
-[Tkinter选择路径功能的实现][4]
-[python-docx][5]
+## 参考文献
+[Python读取word文本操作详解][2] 、
+[tkinter模块常用参数(python3)][3]、
+[Tkinter选择路径功能的实现][4]、
+[python-docx][5]、
 [破解google翻译API全过程][6]
 
 
