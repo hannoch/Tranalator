@@ -27,50 +27,56 @@ class JiroApplication(Frame):
     def create_window(self):
 
         def translate_link(documnt_conent):
-            if translate_link_chosen.current(0):
-                translate_result = baidu_translate(text=documnt_conent,
-                                                   to=language.get())
+            if translate_link_chosen.get() == '百度翻译' :
+
+                translate_result = baidu_translate(text=documnt_conent,to=language.get())
+                print("baidu tranlate loading...")
                 # 在翻译结果区域显示结果
                 trans_result_box.insert(END, translate_result)
-            else:
+            elif translate_link_chosen.get() == '谷歌翻译' :
                 translate_result = google_translate(text=documnt_conent,
                                                     to_language=language.get())
+                print("google tranlate loading...")
                 # 在翻译结果区域显示结果
                 trans_result_box.insert(END, translate_result)
 
         def documnt_translate(event):
-
+      
             documnt_conent = type_content_box.get('1.0', 'end-1c')
+          
             # 统计有多少字符
             # print(type_content_box.count('1.0', END))
             # 匹配五段，以换行为界限
             pattern = re.compile(r'.*?\n.*?\n.*?\n.*?\n.*?\n')
             find_paragraphs = pattern.findall(documnt_conent)
-
             for find_paragraph in find_paragraphs:
                 if type_content_box.count('1.0', END) > tuple([0]):
-                    translate_link(documnt_conent)
-
+                	                   
+                    translate_link(find_paragraph)
+           
             finally_pattern = re.compile(find_paragraphs[-1] + '(.*?)')
             finally_paragraph = finally_pattern.search(documnt_conent)
-            #print(find_paragraph)
-            translate_link(documnt_conent)
+            translate_link(find_paragraph)
 
         def boxconnent_translate():
             documnt_conent = type_content_box.get('1.0', 'end-1c')
             if type_content_box.count('1.0', END) > tuple([0]):
                 translate_link(documnt_conent)
+                pass
 
 
 
         # 显示翻译结果
         def show_trans_result():
             # 运行结果按钮状态:正在翻译
-            run_after.config(text='正在翻译', bg='#ffffff', fg='#000000', )
+      
             trans_result_box.delete(1.0, END)
+           
+            run_after.config(text='正在翻译', bg='#ffffff', fg='#000000', )
             # 翻译文档 事件绑定鼠标左键按下放开时，翻译文档
             openfile_button.bind('ButtonRelease-1',documnt_translate)
             #直接翻译文本框里的内容
+            
             boxconnent_translate()
             # 运行结果按钮状态:运行结果
             run_after.config(text='运行结果')
@@ -101,7 +107,7 @@ class JiroApplication(Frame):
 
             filename = tkinter.filedialog.askopenfilename(filetypes=filetypes)
             if filename != '':
-                openfile_lable.config(text="您选择的文件是：" + filename)
+                openfile_lable.config(text=filename)
                 get_documnt(filename)
             else:
                 openfile_lable.config(text="您没有选择任何文件")
@@ -114,7 +120,7 @@ class JiroApplication(Frame):
                 if filename:
                     filename.write(text_value + '\n')
 
-                savefile_lable.config(text="您选择的文件是：" + filename.name)
+                savefile_lable.config(text=filename.name)
 
         #打开文件标签
         openfile_lable = Label(self.master, text='请选择word文档', width=47, bg='#6495ED', fg='#ffffff',
@@ -140,6 +146,7 @@ class JiroApplication(Frame):
         # 选择语言
         language = StringVar()
         language_chosen = Combobox(self.master, width=10, textvariable=language, )
+        #language_chosen = Combobox(self.master, width=10, )
         language_chosen['values'] = ['中文', '英语', '日语']  # 设置下拉列表的值
         language_chosen.place(x=25 * 7, y=50)
         language_chosen.current(0)
@@ -149,6 +156,7 @@ class JiroApplication(Frame):
         translate_link_chosen['values'] = ['百度翻译', '谷歌翻译']  # 设置下拉列表的值
         translate_link_chosen.place(x=40 * 7, y=50)
         translate_link_chosen.current(0)
+
         # 翻译按钮
         translate_button = Button(self.master, text='翻   译', width=10, bg='#6495ED', fg='#ffffff',
                                   relief='flat', command=lambda: show_trans_result(),
@@ -212,7 +220,7 @@ root.geometry('{}x{}+{}+{}'.format(str(WIDTH), str(HEIGHT),
 root.resizable(0, 0)
 
 # 弹出对话框
-#messagebox.showinfo(title='Fanven Box', message=__doc__ + '\n\t\t\t————' + __author__)
+messagebox.showinfo(title='Fanven Box', message=__doc__ + '\n\t\t\t————' + __author__)
 # 显示窗口
 root.deiconify()
 
