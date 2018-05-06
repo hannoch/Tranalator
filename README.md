@@ -5,7 +5,7 @@
 [TOC]
 
 # 一、使用说明
-下载代码后在python3.7环境下运行，如图1所示。
+下载代码后在python3.7环境下运行Fanven.py文件，如图1所示。
 ![图1](https://upload-images.jianshu.io/upload_images/5451635-112bbe6823a57fbe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 图1
 
