@@ -4,7 +4,7 @@
 
 [TOC]
 
-# 使用说明
+# 一、使用说明
 下载代码后在python3.7环境下运行，如图1所示。
 ![图1](https://upload-images.jianshu.io/upload_images/5451635-112bbe6823a57fbe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 图1
@@ -19,14 +19,14 @@
 ![image.png](https://upload-images.jianshu.io/upload_images/5451635-7c21b5204b2f2b3e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 图3
 
-# 安装说明
-## 获取代码
+# 二、安装说明
+## 1.获取代码
 
     git clone https://github.com/hannoch/Tranalator.git
 
-## 安装python环境
+## 2.安装python环境
 参考[python安装百度经验][1]，在此不再重复说明。
-## 安装所需的模块
+## 3.安装所需的模块
 
 ### docx扩展包
 作用：用于打开word文档。
